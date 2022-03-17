@@ -11,6 +11,14 @@ router.get("/room/list", async (req, res) => {
     res.render("roomList", {rooms});
 });
 
+router.get("/room/reviews/:id", async (req, res) => {
+    const roomId = mongoose.Types.ObjectId(req.params.id);
+    const room = await Room.findById(roomId);
+    await room.populate("reviews");
+
+    res.render("roomReviews", {room});
+});
+
 router.use(require("../middlewares/requireLogin"));
 router.get("/room/create", (req, res) => {
     res.render("roomCreate");
@@ -32,7 +40,7 @@ router.post("/room/create", async (req, res) => {
 
 router.get("/room/edit/:id", async (req, res) => {
     const roomId = mongoose.Types.ObjectId(req.params.id);
-    const room = await Room.findOne({_id: roomId});
+    const room = await Room.findById(roomId);
     const userId = mongoose.Types.ObjectId(req.session.user._id); 
 
     if (userId.equals(room.owner)) {
@@ -53,7 +61,7 @@ router.post("/room/edit/:id", async (req, res) => {
 
 router.post("/room/delete/:id", async (req, res) => {
     const roomId = mongoose.Types.ObjectId(req.params.id);
-    const room = await Room.findOne({_id: roomId});
+    const room = await Room.findById(roomId);
     const userId = mongoose.Types.ObjectId(req.session.user._id);
 
     if (userId.equals(room.owner)) {

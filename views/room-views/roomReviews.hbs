@@ -1,0 +1,7 @@
+<h1>{{room.name}}</h1>
+<h2>{{room.description}}</h2>
+{{#each room.reviews}}
+    <h6>{{this.comment}}</h6>
+    <p>Author: {{this.user.fullName}}</p>
+{{/each}}
+<a href="/review/create/{{room._id}}">Create Review</a>

@@ -1,6 +1,6 @@
 <h1>Rooms</h1>
 {{#each rooms}}
-    <h3>{{this.name}}</h3>
+    <h3><a href="/room/reviews/{{this._id}}">{{this.name}}</a></h3>
     <h5>Created By: {{this.owner.fullName}}</h5>
     <a href="/room/edit/{{this._id}}">Edit</a>
     <form action="/room/delete/{{this._id}}" method="POST">

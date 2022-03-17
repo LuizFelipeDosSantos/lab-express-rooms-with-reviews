@@ -39,7 +39,8 @@ module.exports = (app) => {
   const viewsPath = path.join(__dirname, "..", "views");
   const authViewsPath = path.join(__dirname, "..", "views", "auth-views");
   const roomViewsPath = path.join(__dirname, "..", "views", "room-views");
-  app.set("views", [viewsPath, authViewsPath, roomViewsPath]);
+  const reviewViewsPath = path.join(__dirname, "..", "views", "review-views");
+  app.set("views", [viewsPath, authViewsPath, roomViewsPath, reviewViewsPath]);
   // Sets the view engine to handlebars
   app.set("view engine", "hbs");
   // Handles access to the public folder
