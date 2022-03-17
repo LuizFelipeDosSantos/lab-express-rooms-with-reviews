@@ -1,0 +1,7 @@
+<h1>Edit Room</h1>
+<form action="/room/edit/{{room._id}}" method="POST">
+    <input type="text" name="name" value="{{room.name}}" placeholder="Enter Room Name">
+    <input type="text" name="description" value="{{room.description}}" placeholder="Enter Room Description">
+    <input type="text" name="imageUrl" value="{{room.imageUrl}}" placeholder="Enter Room ImageURL">
+    <button type="submit">Save</button>
+</form>

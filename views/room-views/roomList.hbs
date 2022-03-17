@@ -1,0 +1,11 @@
+<h1>Rooms</h1>
+{{#each rooms}}
+    <h3>{{this.name}}</h3>
+    <h5>Created By: {{this.owner.fullName}}</h5>
+    <a href="/room/edit/{{this._id}}">Edit</a>
+    <form action="/room/delete/{{this._id}}" method="POST">
+        <button type="submit">Delete</button>
+    </form>
+{{/each}}
+<br>
+<a href="/room/create">Create New Room</a>
